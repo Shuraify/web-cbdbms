@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-5.11.1/css/all.css">
+    <link rel="stylesheet" href="css/home.css">
+    <title>Chargeback DBMS - Home</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Left Sidebar -->
+        <nav id="left-sidebar" class="d-flex flex-column active">
+            <div class="header">
+                <a class="nav-link disabled" href="#">
+                    <svg version="1.1" id="nav-logo" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 380.66 360.66"
+                        style="enable-background:new 0 0 380.66 360.66;" xml:space="preserve">
+                        <style type="text/css">
+                            .st0{fill:#D03931;}
+                        </style>
+                        <path class="st0" d="M273.75,165.99c-0.87-13.04-4.35-26.07-11.3-37.37L203.36,25.2c-4.35-7.82-7.82-16.51-9.56-25.2l-2.61,4.35
+                            c-14.77,25.2-14.77,57.36,0,82.56l47.8,82.56c14.77,25.2,14.77,57.36,0,82.56l-2.61,4.35c-1.74-8.69-5.21-17.38-9.56-25.2
+                            l-43.45-75.61l-27.81-48.67c-4.35-7.82-7.82-16.51-9.56-25.2l-2.61,4.35c-14.77,25.2-14.77,56.49,0,82.56l47.8,82.56
+                            c14.77,25.2,14.77,57.36,0,82.56l-2.61,4.35c-1.74-8.69-5.21-17.38-9.56-25.2l-59.96-103.42c-7.82-13.9-11.3-29.55-11.3-45.19
+                            C44.32,180.76,0,216.39,0,257.24c0,57.36,85.17,103.42,190.32,103.42s190.32-46.06,190.32-103.42
+                            C381.51,218.13,338.06,182.5,273.75,165.99L273.75,165.99z"/>
+                        </svg> 
+                </a>
+            </div>
+            <ul class="list-unstyled components flex-fill">
+                <li class="active">
+                    <a href="#">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-search"></i>
+                        <span>View/Edit Case</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-coins"></i>
+                        <span>Credit Cardholder</span>
+                    </a>
+                </li>
+            </ul>
+            <footer class="d-flex flex-column text-center">
+                <div class="separator mx-auto"></div>
+                <p>&copy; 2020 Santander. All rights reserved.</p>
+            </footer>
+        </nav>
+        <div class="row no-gutters half-circle align-self-center align-items-center" id="left-sidebarCollapse">
+            <div class="col">
+                <i id="arrow" class="fa fa-chevron-right"></i>
+            </div>
+        </div>
+        <!-- Content -->
+        <div id="content" class="active">
+            <div class="align-items-center">
+                <h4 class="content-heading">Home</h4>
+            </div>
+            <div class="alerts">
+                <div class="alert alert-success" role="alert">
+                    * <strong>5</strong> * Cases are ready to be closed. <a href="#" class="alert-link">Click to
+                        generate vouchers.</a>
+                </div>
+                <div class="alert alert-danger" role="alert">
+                    * <strong>2</strong> * Cases are about to be lost. <a href="#" class="alert-link">Click to
+                        review.</a>
+                </div>
+            </div>
+            <h5 class="mt-4">Register Case</h5>
+            <div class="form-group register-case">
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <input type="text" maxlength="6" class="form-control" placeholder="Case ID">
+                        <input type="text" id="c-num" class="form-control" placeholder="Card Number"
+                            onkeypress="return checkDigit(event)">
+                    </div>
+                    <div class="col-3">
+                        <input type="text" maxlength="8" class="form-control" placeholder="CIF">
+                        <input type="text" class="form-control" placeholder="Cardholder Name">
+                    </div>
+                    <div class="col-3">
+                        <input type="tel" maxlength="10" class="form-control"
+                            placeholder="Oldest Transaction Date (dd/mm/yyyy)"
+                            oninput="this.value = DDMMYYYY(this.value, event)" />
+                        <textarea type="tel" id="auth-numbers" class="form-control" placeholder="Auth Number(s)"
+                            onkeypress="return checkDigit(event)"></textarea>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-danger">Submit</button>
+                    </div>
+                </div>
+            </div>
+            <h5 class="mt-4">Recent Cases</h5>
+            <div class="row no-gutters cases-cards">
+                <!-- Start of Card 1-->
+                <div class="col">
+                    <div class="card bg-light">
+                        <div class="card-header case-new">
+                            <div class="row">
+                                <div class="col text-left">123456</div>
+                                <div class="col text-right">New</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row category justify-content-center">
+                                <h6>Not Fraud | Service Not As Described</h6>
+                            </div>
+                            <div class="row text-center c-num">
+                                <div class="col-8">4421xxxxxxxx2412</div>
+                                <div class="col segment">
+                                    <span class="badge badge badge-pill badge-success">Priority</span>
+                                </div>
+                            </div>
+                            <div class="row t-date text-center">
+                                <div class="col">
+                                    <div class="align-self-center label"># Transactions</div>
+                                    <div class="text-muted">5</div>
+                                </div>
+                                <div class="col">
+                                    <div class="label">Oldest</div>
+                                    <div class="text-muted">25/11/2019</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex card-footer text-center bg-transparent">
+                            <a class="btn btn-link btn-left flex-fill" href="#" role="button">View</a>
+                            <span class="button-separator"></span>
+                            <a class="btn btn-link btn-right flex-fill" href="#" role="button">Edit</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Card -->
+                <!-- Start of Card 2-->
+                <div class="col">
+                    <div class="card bg-light">
+                        <div class="card-header case-wfi">
+                            <div class="row">
+                                <div class="col text-left">123456</div>
+                                <div class="col text-right">Waiting for info</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row category justify-content-center">
+                                <h6>Fraud</h6>
+                            </div>
+                            <div class="row text-center c-num">
+                                <div class="col-8">4421xxxxxxxx2412</div>
+                                <div class="col segment">
+                                    <span class="badge badge badge-pill badge-primary">Mass</span>
+                                </div>
+                            </div>
+                            <div class="row t-date text-center">
+                                <div class="col">
+                                    <div class="align-self-center label"># Transactions</div>
+                                    <div class="text-muted">5</div>
+                                </div>
+                                <div class="col">
+                                    <div class="label">Oldest</div>
+                                    <div class="text-muted">25/11/2019</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex card-footer text-center bg-transparent">
+                            <a class="btn btn-link btn-left flex-fill" href="#" role="button">View</a>
+                            <span class="button-separator"></span>
+                            <a class="btn btn-link btn-right flex-fill" href="#" role="button">Edit</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Card -->
+                <!-- Start of Card 3-->
+                <div class="col">
+                    <div class="card bg-light">
+                        <div class="card-header case-denied">
+                            <div class="row">
+                                <div class="col text-left">123456</div>
+                                <div class="col text-right">Denied</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row category justify-content-center">
+                                <h6>Not Fraud | Service Not Provided</h6>
+                            </div>
+                            <div class="row text-center c-num">
+                                <div class="col-8">4421xxxxxxxx2412</div>
+                                <div class="col segment">
+                                    <span class="badge badge badge-pill badge-success">Priority</span>
+                                </div>
+                            </div>
+                            <div class="row t-date text-center">
+                                <div class="col">
+                                    <div class="align-self-center label"># Transactions</div>
+                                    <div class="text-muted">5</div>
+                                </div>
+                                <div class="col">
+                                    <div class="label">Oldest</div>
+                                    <div class="text-muted">25/11/2019</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex card-footer text-center bg-transparent">
+                            <a class="btn btn-link btn-left flex-fill" href="#" role="button">View</a>
+                            <span class="button-separator"></span>
+                            <a class="btn btn-link btn-right flex-fill" href="#" role="button">Edit</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Card -->
+                <!-- Start of Card 4-->
+                <div class="col">
+                    <div class="card bg-light">
+                        <div class="card-header case-ua">
+                            <div class="row">
+                                <div class="col text-left">123456</div>
+                                <div class="col text-right">Under Auth</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row category justify-content-center">
+                                <h6>Not Fraud | Duplicate Transactions</h6>
+                            </div>
+                            <div class="row text-center c-num">
+                                <div class="col-8">4421xxxxxxxx2412</div>
+                                <div class="col segment">
+                                    <span class="badge badge badge-pill badge-primary">Mass</span>
+                                </div>
+                            </div>
+                            <div class="row t-date text-center">
+                                <div class="col">
+                                    <div class="align-self-center label"># Transactions</div>
+                                    <div class="text-muted">5</div>
+                                </div>
+                                <div class="col">
+                                    <div class="label">Oldest</div>
+                                    <div class="text-muted">25/11/2019</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex card-footer text-center bg-transparent">
+                            <a class="btn btn-link btn-left flex-fill" href="#" role="button">View</a>
+                            <span class="button-separator"></span>
+                            <a class="btn btn-link btn-right flex-fill" href="#" role="button">Edit</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Card -->
+                <!-- Start of Card 5-->
+                <div class="col">
+                    <div class="card bg-light">
+                        <div class="card-header case-new">
+                            <div class="row">
+                                <div class="col text-left">123456</div>
+                                <div class="col text-right">New</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row category justify-content-center">
+                                <h6>Not Fraud | Credit Not Processed</h6>
+                            </div>
+                            <div class="row text-center c-num">
+                                <div class="col-8">4421xxxxxxxx2412</div>
+                                <div class="col segment">
+                                    <span class="badge badge badge-pill badge-primary">Mass</span>
+                                </div>
+                            </div>
+                            <div class="row t-date text-center">
+                                <div class="col">
+                                    <div class="align-self-center label"># Transactions</div>
+                                    <div class="text-muted">5</div>
+                                </div>
+                                <div class="col">
+                                    <div class="label">Oldest</div>
+                                    <div class="text-muted">25/11/2019</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex card-footer text-center bg-transparent">
+                            <a class="btn btn-link btn-left flex-fill" href="#" role="button">View</a>
+                            <span class="button-separator"></span>
+                            <a class="btn btn-link btn-right flex-fill" href="#" role="button">Edit</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Card -->
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <h5 class="mt-4">Generate Report</h5>
+                    <div class="row form-group generate-report">
+                        <div class="col">
+                            <input type="tel" maxlength="10" class="form-control" placeholder="Date From (dd/mm/yyyy)"
+                                oninput="this.value = DDMMYYYY(this.value, event)" />
+                            <input type="tel" maxlength="10" class="form-control" placeholder="Date To (dd/mm/yyyy)"
+                                oninput="this.value = DDMMYYYY(this.value, event)" />
+                            <button type="button" class="btn btn-danger">Submit</button>
+                        </div>
+                        <div class="col">
+                            <select class="form-control">
+                                <option>All</option>
+                                <option>Not Fraud</option>
+                                <option>Fraud</option>
+                            </select>
+                            <select class="form-control">
+                                <option>Excel</option>
+                                <option>PDF</option>
+                            </select>
+                        </div>
+                        <div class="d-inline-flex col-auto text-muted">
+                            <div class="text-left form-check-label-all mr-3">Visible Fields:</div>
+                            <div>
+                                <div class="form-check form-check">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                        value="option1">
+                                    <label class="form-check-label" for="inlineCheckbox1">All</label>
+                                </div>
+                                <div class="form-check form-check">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                        value="option2">
+                                    <label class="form-check-label" for="inlineCheckbox2">Case ID</label>
+                                </div>
+                                <div class="form-check form-check">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
+                                        value="option3">
+                                    <label class="form-check-label" for="inlineCheckbox3">Card Number</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-inline-flex col-auto text-muted">
+                            <div>
+                                <div class="form-check form-check">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox4"
+                                        value="option4">
+                                    <label class="form-check-label" for="inlineCheckbox4">CIF</label>
+                                </div>
+                                <div class="form-check form-check">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox5"
+                                        value="option5">
+                                    <label class="form-check-label" for="inlineCheckbox5">Auth Number(s)</label>
+                                </div>
+                                <div class="form-check form-check">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox6"
+                                        value="option6">
+                                    <label class="form-check-label" for="inlineCheckbox6">Status</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <h5 class="mt-4">Fill Transactions</h5>
+                    <div class="row fill-transactions">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="File Location">
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary">Browse</button>
+                        </div>
+                    </div>
+                    <div class="row fill-transactions">
+                        <div class="col">
+                            <button type="button" class="btn btn-danger">Upload</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Right Sidebar -->
+        <div id="right-sidebar">
+            <div class="account-link">
+                <h6><a href="#">Abdullah</a>, <a href="#" class="signout-link">Signout?</a></h6>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="js/home.js"></script>
+</body>
+
+</html>
